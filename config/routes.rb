@@ -78,26 +78,26 @@ Rails.application.routes.draw do
     end
   end
 
-  scope '(:locale)', locale: /en|es|fr/ do
-  #   # get '/:id/settings', to: 'settings#index', as: 'user_settings'
-  #   # get '/:id/edit', to: 'users/registrations#edit', as: 'user_edit'
-  #   # patch '/:id', to: 'users/registrations#update', as: 'user_update'
-  #   # resources :users, only: [:show], path: '/'
+  # scope '(:locale)', locale: /en|es|fr/ do
+  # #   # get '/:id/settings', to: 'settings#index', as: 'user_settings'
+  # #   # get '/:id/edit', to: 'users/registrations#edit', as: 'user_edit'
+  # #   # patch '/:id', to: 'users/registrations#update', as: 'user_update'
+  # #   # resources :users, only: [:show], path: '/'
 
-  #   # resources :pages, except: [:index, :show], path: '/p'
+  # #   # resources :pages, except: [:index, :show], path: '/p'
 
-  # # this route entry will take care of forwarding all the page/* urls to the index
-  # # get '/u/:id', to: 'posts#show', format: false#, constraints: { id: /.*/ }
-  # get '/status', to: redirect('/status/top')
-  # get '/status/top', to: 'posts#index', format: false
-  # get '/status/:id', to: 'posts#show', format: false#, constraints: { id: /.*/ }
-  # match '/status/*path', to: 'posts#index', format: false, via: :get
+  # # # this route entry will take care of forwarding all the page/* urls to the index
+  # # # get '/u/:id', to: 'posts#show', format: false#, constraints: { id: /.*/ }
+  # # get '/status', to: redirect('/status/top')
+  # # get '/status/top', to: 'posts#index', format: false
+  # # get '/status/:id', to: 'posts#show', format: false#, constraints: { id: /.*/ }
+  # # match '/status/*path', to: 'posts#index', format: false, via: :get
 
-    # root to: "application#index"
-    # match "*path", to: "application#index", format: false, via: :get
-    root to: 'vue#index', format: false
-    match "*path", to: "vue#index", format: false, via: :get
-  end
+  #   # root to: "application#index"
+  #   # match "*path", to: "application#index", format: false, via: :get
+  #   root to: 'vue#index', format: false
+  #   match "*path", to: "vue#index", format: false, via: :get
+  # end
 
   # Sidekiq Web UI, only for admins.
   # require "sidekiq/web"
