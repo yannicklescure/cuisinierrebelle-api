@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
 
-  get '/sitemap.xml', to: redirect('https://sitemap.cuisinierrebelle.com/sitemap.xml.gz', status: 301)
+  # get '/sitemap.xml', to: redirect('https://sitemap.cuisinierrebelle.com/sitemap.xml.gz', status: 301)
 
-  scope path: 'api' do
+  # scope path: 'api' do
+  #   # api_guard_routes for: 'users'
+  #   api_guard_routes for: 'users', controller: {
+  #     registration: 'users/registration',
+  #     authentication: 'users/authentication',
+  #     passwords: 'users/passwords',
+  #     tokens: 'users/tokens'
+  #   }
+  # end
+
+  # constraints subdomain: 'api' do
     # api_guard_routes for: 'users'
     api_guard_routes for: 'users', controller: {
       registration: 'users/registration',
@@ -10,17 +20,7 @@ Rails.application.routes.draw do
       passwords: 'users/passwords',
       tokens: 'users/tokens'
     }
-  end
-
-  constraints subdomain: 'api' do
-    # api_guard_routes for: 'users'
-    api_guard_routes for: 'users', controller: {
-      registration: 'users/registration',
-      authentication: 'users/authentication',
-      passwords: 'users/passwords',
-      tokens: 'users/tokens'
-    }
-  end
+  # end
 
   # scope '(:locale)', locale: /en|es|fr/ do
     # devise_for :users, as: :api, defaults: { format: :json }
@@ -28,8 +28,8 @@ Rails.application.routes.draw do
       defaults: { format: :json },
       # class_name: 'Api::V1::Users',
       controllers: {
-       sessions: 'api/v1/sessions',
-       registrations: 'api/v1/registrations',
+       # sessions: 'api/v1/sessions',
+       # registrations: 'api/v1/registrations',
        confirmations: 'api/v1/confirmations',
       },
       path_prefix: '/api/v1'
@@ -37,10 +37,10 @@ Rails.application.routes.draw do
   # end
 
   devise_scope :user do
-    post 'api/v1/users/resend_confirmation_instructions', to: 'api/v1/confirmations#resend_confirmation_instructions', as: 'resend_confirmation_instructions'
+    post '/users/resend_confirmation_instructions', to: 'api/v1/confirmations#resend_confirmation_instructions', as: 'resend_confirmation_instructions'
   end
 
-  constraints subdomain: 'api' do
+  # constraints subdomain: 'api' do
     namespace :api, path: nil, defaults: { format: :json } do
       namespace :v1 do
         post '/users/password/reset', to: 'password#reset_user_password', as: 'reset_user_password'
@@ -78,7 +78,7 @@ Rails.application.routes.draw do
         # resources :session, only: [ :create, :destroy ]
       end
     end
-  end
+  # end
 
   # scope '(:locale)', locale: /en|es|fr/ do
   # #   # get '/:id/settings', to: 'settings#index', as: 'user_settings'
