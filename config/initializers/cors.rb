@@ -28,7 +28,12 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors, debug: true, lo
   allow do
     origins '*'
 
-    resource  '/api/v1/*',
+    resource  '/users/*',
+      headers: %w(Authorization),
+      methods: :any,
+      expose: %w(Authorization)
+
+    resource  '/v1/*',
       headers: %w(Authorization),
       methods: :any,
       expose: %w(Authorization)
