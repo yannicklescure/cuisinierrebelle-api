@@ -7,7 +7,7 @@
 # from https://github.com/rails/rails/pull/37468
 module ActiveSupportBackports
 
-  warn "[DEPRECATED] #{self} should no longer be needed. Please remove!" if Rails.version >= '6.0.4'
+  warn "[DEPRECATED] #{self} should no longer be needed. Please remove!" if Rails.version >= '6.1'
 
   def self.prepended(base)
     base.class_eval do
