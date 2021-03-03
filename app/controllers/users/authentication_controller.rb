@@ -8,6 +8,7 @@ module Users
       if resource.authenticate(params[:password])
         create_token_and_set_header(resource, resource_name)
         # render_success(message: I18n.t('api_guard.authentication.signed_in'))
+        puts resource.email
         respond_with(resource)
       else
         render_error(422, message: I18n.t('api_guard.authentication.invalid_login_credentials'))
