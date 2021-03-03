@@ -31,7 +31,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors, debug: true, lo
     resource '*',
       headers: :any,
       expose: ['authorization', 'access-token', 'refresh-token', 'expire-at'],
-      methods: [:get, :post, :delete, :put, :patch, :options, :head],
+      methods: [:get, :post, :delete, :put, :patch, :options, :head]
 
     # resource  '/api/v1/*',
     #   headers: %w(Authorization),
