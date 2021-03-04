@@ -30,8 +30,8 @@ import axios from 'axios'
 // const metaCsrf = document.querySelector("meta[name='csrf-token']")
 // const context.getters.csrfToken = metaCsrf.getAttribute('content')
 
-const domain = 'https://api.cuisinierrebelle.com'
-// const domain = ''
+// const domain = 'https://www.cuisinierrebelle.com'
+const domain = ''
 
 export const userNotifications = (context, payload) => {
   return axios({

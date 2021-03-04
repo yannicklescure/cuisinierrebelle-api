@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # constraints subdomain: 'api' do
     # api_guard_routes for: 'users'
     api_guard_routes for: 'users', controller: {
-      registration: 'users/registration',
+      # registration: 'users/registration',
       authentication: 'users/authentication',
       passwords: 'users/passwords',
       tokens: 'users/tokens'
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
       # class_name: 'Api::V1::Users',
       controllers: {
        # sessions: 'api/v1/sessions',
-       # registrations: 'api/v1/registrations',
+       registrations: 'api/v1/registrations',
        confirmations: 'api/v1/confirmations',
       },
       path_prefix: '/api/v1'
@@ -95,10 +95,10 @@ Rails.application.routes.draw do
   # # get '/status/:id', to: 'posts#show', format: false#, constraints: { id: /.*/ }
   # # match '/status/*path', to: 'posts#index', format: false, via: :get
 
-  #   # root to: "application#index"
-  #   # match "*path", to: "application#index", format: false, via: :get
-  #   root to: 'vue#index', format: false
-  #   match "*path", to: "vue#index", format: false, via: :get
+    # root to: "application#index"
+    # match "*path", to: "application#index", format: false, via: :get
+    root to: 'vue#index', format: false
+    match "*path", to: "vue#index", format: false, via: :get
   # end
 
   # Sidekiq Web UI, only for admins.
