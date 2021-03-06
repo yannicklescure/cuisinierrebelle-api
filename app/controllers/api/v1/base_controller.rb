@@ -66,6 +66,7 @@ class Api::V1::BaseController < ActionController::API
     # binding.pry
     @token = request.headers['Authorization']&.split('Bearer ')&.last
     @token = nil if @token == "null"
+    puts "token #{ @token }"
     # binding.pry
     # if request.headers['Authorization'].present?
     if @token.nil?
@@ -75,6 +76,7 @@ class Api::V1::BaseController < ActionController::API
       jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1].remove('"'), ENV['DEVISE_JWT_SECRET_KEY']).first
       @user = User.find(jwt_payload['user_id'])
       authorize @user
+      puts @user.email
       authenticate_and_set_user if @user.present?
     end
   end
