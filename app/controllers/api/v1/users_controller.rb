@@ -64,6 +64,64 @@ class Api::V1::UsersController < Api::V1::BaseController
     render json: json
   end
 
+  def show
+    # @users = policy_scope(User).includes([:followers, :following])
+    # @device = DeviceDetector.new(request.user_agent).device_type
+    @user = User.find_by(slug: params[:id])
+    authorize @user
+    json = MultiJson.dump({
+      data: {
+          id: @user.id,
+          slug: @user.slug,
+          name: @user.name,
+          checked: @user.checked,
+          followers: {
+            count: @user.followers.length,
+            data: @user.followers.map { |f| {
+                name: f.name,
+                slug: f.slug,
+                checked: f.checked,
+                image: {
+                  thumb: {
+                    url: f.image.url(:thumb)
+                  }
+                }
+              }
+            },
+          },
+          following: {
+            count: @user.following.length,
+            data: @user.following.map { |f| {
+                name: f.name,
+                slug: f.slug,
+                checked: f.checked,
+                image: {
+                  thumb: {
+                    url: f.image.url(:thumb)
+                  }
+                }
+              }
+            },
+          },
+          image: {
+            full: {
+              url: @user.image.url(:full)
+            },
+            preview: {
+              url: @user.image.url(:preview)
+            },
+            openGraph: {
+              url: @user.image.url(:open_graph)
+            },
+            thumb: {
+              url: @user.image.url(:thumb)
+            }
+          },
+        }
+      })
+    render json: json
+  end
+
   def follow
     # binding.pry
     if current_user.follow(@user.id)
