@@ -47,7 +47,7 @@ class CreateUsersJsonCacheJob < ApplicationJob
                   url: user.image.url(:preview)
                 },
                 openGraph: {
-                  url: recipe.photo.url(:open_graph)
+                  url: user.image.url(:open_graph)
                 },
                 thumb: {
                   url: user.image.url(:thumb)
