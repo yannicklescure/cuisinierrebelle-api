@@ -87,12 +87,14 @@ class CommentPhotoUploader < CarrierWave::Uploader::Base
 
   version :open_graph do
     # process resize_to_fill: [1200, 1200]
+    # process efficient_conversion: [1200, 1200]
+    # process convert_to_webp: [{ quality: 60, method: 6 }]
+    # def full_filename(file)
+    #   return "#{version_name}_#{file}" if file.split('.').last == 'webp'
+    #   "#{version_name}_#{file}.webp"
+    # end
     process efficient_conversion: [1200, 1200]
-    process convert_to_webp: [{ quality: 60, method: 6 }]
-    def full_filename(file)
-      return "#{version_name}_#{file}" if file.split('.').last == 'webp'
-      "#{version_name}_#{file}.webp"
-    end
+    process convert: 'jpg'
   end
 
   version :full do
