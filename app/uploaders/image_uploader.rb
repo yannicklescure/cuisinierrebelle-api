@@ -127,26 +127,17 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def sanitized_file
-    # binding.pry
-    if self.file.exists?
-      super
-    else
-      nil
-    end
+    super
   end
 
   # remember the tmp file
   def cache!(new_file = sanitized_file)
-    if new_file.nil?
-      @old_tmp_file = nil
-    else
-      super
-      @old_tmp_file = new_file
-    end
+    super
+    @old_tmp_file = new_file
   end
 
   def delete_old_tmp_file(dummy)
-    @old_tmp_file.try :delete unless @old_tmp_file.nil?
+    @old_tmp_file.try :delete
   end
 
   protected
