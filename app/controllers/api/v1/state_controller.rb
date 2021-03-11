@@ -15,7 +15,7 @@ class Api::V1::StateController < Api::V1::BaseController
       end
     else
       # @recipes = policy_scope(Recipe).includes([:user, :comments]).sort_by {|k,v| k.id}.reverse[0...24]
-      @recipes = policy_scope(Recipe).includes([:user, :taggings])
+      @recipes = policy_scope(Recipe).includes([:user, :taggings]).last(24)
       @users = User.all.includes([:follower_relationships, :followers, :following])
       force_update = 1606330015013
       @last_update = (Recipe.last.created_at.to_f * 1000).to_i
