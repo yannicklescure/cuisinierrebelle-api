@@ -1,11 +1,12 @@
 class Api::V1::RegistrationsController < Devise::RegistrationsController
   skip_before_action :verify_authenticity_token, only: [:create, :destroy]
 
-  def jwt_with_denylist_user_auth_action
-    head :ok
-  end
-  before_action :authenticate_jwt_with_denylist_user!,
-                only: :jwt_with_denylist_user_auth_action
+  # def jwt_with_denylist_user_auth_action
+  #   head :ok
+  # end
+  # before_action :authenticate_jwt_with_denylist_user!,
+  #               only: :jwt_with_denylist_user_auth_action
+  before_action :process_token, only: [:create, :destroy]
 
   # clear_respond_to
   respond_to :json
@@ -71,6 +72,25 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   end
 
   private
+
+  def process_token
+    # binding.pry
+    @token = request.headers['Authorization']&.split('Bearer ')&.last
+    @token = nil if @token == "null"
+    puts "token #{ @token }"
+    # binding.pry
+    # if request.headers['Authorization'].present?
+    if @token.nil?
+      @user = NullObject.new
+      authorize @user
+    else
+      jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1].remove('"'), ENV['DEVISE_JWT_SECRET_KEY']).first
+      @user = User.find(jwt_payload['user_id'])
+      authorize @user
+      puts @user.email
+      authenticate_and_set_user if @user.present?
+    end
+  end
 
   def async_update(resource)
     # MailchimpUnsubscribeUser.perform_later(resource)
