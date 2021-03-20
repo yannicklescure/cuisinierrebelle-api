@@ -46,6 +46,8 @@ class Api::V1::PagesController < Api::V1::BaseController
 
   def update
     # binding.pry
+    # puts current_user.email
+    # puts params[:title]
     @page = Page.find_by(id: params[:id])
     authorize @page  # For Pundit
     params[:page] = {
