@@ -103,40 +103,45 @@ class CreateRecipesJsonCacheJob < ApplicationJob
               }
             }
           },
-          users: User.all.map { |user| {
-              id: user.id,
-              slug: user.slug,
-              name: user.name,
-              checked: user.checked,
-              followers: {
-                count: user.followers.length,
-                data: [],
-              },
-              following: {
-                count: user.following.length,
-                data: [],
-              },
-              image: {
-                full: {
-                  url: user.image.url(:full)
-                },
-                preview: {
-                  url: user.image.url(:preview)
-                },
-                thumb: {
-                  url: user.image.url(:thumb)
-                }
-              },
-            }
-          },
-          pages:Page.all.map { |page| {
-              id: page.id,
-              title: page.title,
-              slug: page.slug,
-              locale: page.locale,
-              content: page.content,
-            }
-          },
+          users: [],
+          # users: User.all.map { |user| {
+          #     id: user.id,
+          #     slug: user.slug,
+          #     name: user.name,
+          #     checked: user.checked,
+          #     followers: {
+          #       count: user.followers.length,
+          #       data: [],
+          #     },
+          #     following: {
+          #       count: user.following.length,
+          #       data: [],
+          #     },
+          #     image: {
+          #       full: {
+          #         url: user.image.url(:full)
+          #       },
+          #       preview: {
+          #         url: user.image.url(:preview)
+          #       },
+          #       openGraph: {
+          #         url: user.image.url(:open_graph)
+          #       },
+          #       thumb: {
+          #         url: user.image.url(:thumb)
+          #       }
+          #     },
+          #   }
+          # },
+          pages: [],
+          # pages:Page.all.map { |page| {
+          #     id: page.id,
+          #     title: page.title,
+          #     slug: page.slug,
+          #     locale: page.locale,
+          #     content: page.content,
+          #   }
+          # },
         }
       })
     end
