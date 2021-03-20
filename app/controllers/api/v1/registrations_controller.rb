@@ -1,12 +1,12 @@
 class Api::V1::RegistrationsController < Devise::RegistrationsController
-  skip_before_action :verify_authenticity_token, only: [:create, :destroy]
+  skip_before_action :verify_authenticity_token, only: :create
 
   # def jwt_with_denylist_user_auth_action
   #   head :ok
   # end
   # before_action :authenticate_jwt_with_denylist_user!,
   #               only: :jwt_with_denylist_user_auth_action
-  before_action :process_token, only: [:create, :destroy]
+  before_action :process_token, only: :destroy
 
   # clear_respond_to
   respond_to :json
