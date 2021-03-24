@@ -117,6 +117,7 @@ class Api::V1::UsersController < Api::V1::BaseController
               url: @user.image.url(:thumb)
             }
           },
+          createdAt: (@user.created_at.to_f * 1000).to_i
         }
       })
     render json: json
