@@ -123,6 +123,9 @@ class CreateRecipesJsonCacheJob < ApplicationJob
                 preview: {
                   url: user.image.url(:preview)
                 },
+                openGraph: {
+                  url: @user.image.url(:open_graph)
+                },
                 thumb: {
                   url: user.image.url(:thumb)
                 }
