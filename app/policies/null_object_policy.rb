@@ -16,4 +16,8 @@ class NullObjectPolicy < ApplicationPolicy
     # false # or true if you want to authorize and handle response later
     true
   end
+
+  def request_user_password_reset?
+    true
+  end
 end
