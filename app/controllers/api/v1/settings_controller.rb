@@ -13,9 +13,9 @@ class Api::V1::SettingsController < Api::V1::BaseController
     end
     if @user.update(user_params)
       # binding.pry
-      create_json_cache(@user)
+      # create_json_cache(@user)
       render json: {
-        picture: @user.photo.url(:card),
+        photo: @user.photo.url(:card),
         user_id: @user.id
       }
     end
