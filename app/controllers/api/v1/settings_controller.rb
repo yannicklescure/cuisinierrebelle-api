@@ -15,7 +15,20 @@ class Api::V1::SettingsController < Api::V1::BaseController
       # binding.pry
       # create_json_cache(@user)
       render json: {
-        photo: @user.photo.url(:card),
+        photo: {
+          full: {
+            url: @user.image.url(:full)
+          },
+          openGraph: {
+            url: @user.image.url(:open_graph)
+          },
+          preview: {
+            url: @user.image.url(:preview)
+          },
+          thumb: {
+            url: @user.image.url(:thumb)
+          }
+        },
         user_id: @user.id
       }
     end
