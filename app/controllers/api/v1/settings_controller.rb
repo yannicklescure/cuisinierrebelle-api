@@ -13,6 +13,8 @@ class Api::V1::SettingsController < Api::V1::BaseController
     end
     if @user.update(user_params)
       # binding.pry
+      CreateRecipesJsonCacheJob.perform_later
+      CreateUsersJsonCacheJob.perform_later
       # create_json_cache(@user)
       render json: {
         image: {
