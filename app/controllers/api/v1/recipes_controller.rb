@@ -312,7 +312,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
               url: @recipe.user.image.url(:preview)
             },
             openGraph: {
-              url: recipe.user.image.url(:open_graph)
+              url: @recipe.user.image.url(:open_graph)
             },
             thumb: {
               url: @recipe.user.image.url(:thumb)

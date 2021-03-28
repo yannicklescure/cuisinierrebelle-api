@@ -98,8 +98,8 @@ Rails.application.routes.draw do
 
     # root to: "application#index"
     # match "*path", to: "application#index", format: false, via: :get
-    root to: 'vue#index', format: false
-    match "*path", to: "vue#index", format: false, via: :get
+    # root to: 'vue#index', format: false
+    # match "*path", to: "vue#index", format: false, via: :get
   # end
 
   # Sidekiq Web UI, only for admins.

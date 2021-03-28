@@ -6,16 +6,16 @@ class Api::V1::SettingsController < Api::V1::BaseController
     @user = current_user
     authorize @user
     params[:user] = {
-      photo: clean_params(params[:photo])
+      image: clean_params(params[:image])
     }
-    if params[:photo] == "[object Object]"
-      params[:photo] = @user.photo
+    if params[:image] == "[object Object]"
+      params[:image] = @user.image
     end
     if @user.update(user_params)
       # binding.pry
       # create_json_cache(@user)
       render json: {
-        photo: {
+        image: {
           full: {
             url: @user.image.url(:full)
           },
@@ -41,7 +41,7 @@ class Api::V1::SettingsController < Api::V1::BaseController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :photo)
+    params.require(:user).permit(:first_name, :last_name, :image)
   end
 
   # def create_json_cache(resource)

@@ -113,11 +113,11 @@ class CommentPhotoUploader < CarrierWave::Uploader::Base
     %w(JPG jpg jpeg gif png)
   end
 
-  def content_type_whitelist
+  def content_type_allowlist
     /image\//
   end
 
-  def content_type_blacklist
+  def content_type_denylist
     ['application/text', 'application/json']
   end
 
