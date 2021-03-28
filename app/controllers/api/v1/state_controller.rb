@@ -5,8 +5,8 @@ class Api::V1::StateController < Api::V1::BaseController
 
   def index
     # binding.pry
-    @user = policy_scope(User)
-    @pages = Page.all
+    # @users = policy_scope(User)
+    # @pages = Page.all
     if params[:query].present?
       if params[:query] === 'isAuthenticated'
         render json: {
@@ -120,41 +120,7 @@ class Api::V1::StateController < Api::V1::BaseController
               }
             },
             users: [],
-            # users: @users.map { |user| {
-            #     id: user.id,
-            #     slug: user.slug,
-            #     name: user.name,
-            #     checked: user.checked,
-            #     followers: {
-            #       count: user.followers.length,
-            #       data: [],
-            #     },
-            #     following: {
-            #       count: user.following.length,
-            #       data: [],
-            #     },
-            #     image: {
-            #       full: {
-            #         url: user.image.url(:full)
-            #       },
-            #       preview: {
-            #         url: user.image.url(:preview)
-            #       },
-            #       thumb: {
-            #         url: user.image.url(:thumb)
-            #       }
-            #     },
-            #   }
-            # },
             pages: [],
-            # pages: @pages.map { |page| {
-            #     id: page.id,
-            #     title: page.title,
-            #     slug: page.slug,
-            #     locale: page.locale,
-            #     content: page.content,
-            #   }
-            # },
           }
         })
       end
