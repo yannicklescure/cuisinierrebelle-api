@@ -111,35 +111,37 @@ class Api::V1::RecipesController < Api::V1::BaseController
               }
             }
           },
-          users: @users.map { |user| {
-              id: user.id,
-              slug: user.slug,
-              name: user.name,
-              checked: user.checked,
-              followers: {
-                count: user.followers.length,
-                data: [],
-              },
-              following: {
-                count: user.following.length,
-                data: [],
-              },
-              image: {
-                full: {
-                  url: user.image.url(:full)
-                },
-                openGraph: {
-                  url: user.image.url(:open_graph)
-                },
-                preview: {
-                  url: user.image.url(:preview)
-                },
-                thumb: {
-                  url: user.image.url(:thumb)
-                }
-              },
-            }
-          }
+          users: [],
+          pages: []
+          # users: @users.map { |user| {
+          #     id: user.id,
+          #     slug: user.slug,
+          #     name: user.name,
+          #     checked: user.checked,
+          #     followers: {
+          #       count: user.followers.length,
+          #       data: [],
+          #     },
+          #     following: {
+          #       count: user.following.length,
+          #       data: [],
+          #     },
+          #     image: {
+          #       full: {
+          #         url: user.image.url(:full)
+          #       },
+          #       openGraph: {
+          #         url: user.image.url(:open_graph)
+          #       },
+          #       preview: {
+          #         url: user.image.url(:preview)
+          #       },
+          #       thumb: {
+          #         url: user.image.url(:thumb)
+          #       }
+          #     },
+          #   }
+          # }
         }
       })
     end

@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   # constraints subdomain: 'api' do
     namespace :api, path: nil, defaults: { format: :json } do
       namespace :v1 do
+        patch '/users/photo', to: 'settings#photo', as: 'user_photo'
         post '/users/password/reset', to: 'password#reset_user_password', as: 'reset_user_password'
         post '/users/password/reset_verification', to: 'password#reset_user_password_verification', as: 'reset_user_password_verification'
         post '/users/password/request', to: 'password#request_user_password_reset', as: 'request_user_password_reset'

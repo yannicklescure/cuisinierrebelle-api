@@ -56,4 +56,9 @@ class UserPolicy < ApplicationPolicy
   def is_authenticated?
     true
   end
+
+  def photo?
+    true
+  end
+
 end

@@ -65,6 +65,9 @@ class Api::V1::StateController < Api::V1::BaseController
                     full: {
                       url: recipe.user.image.url(:full)
                     },
+                    openGraph: {
+                      url: recipe.user.image.url(:open_graph)
+                    },
                     preview: {
                       url: recipe.user.image.url(:preview)
                     },
