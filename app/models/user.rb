@@ -67,7 +67,7 @@ class User < ApplicationRecord
   # after_commit :async_update # Run on create & update
   before_commit :facebook, on: [:create]
   before_commit :sanitize_user_slug, :sanitize_user_image, on: [:create, :update]
-  after_commit :flush_cache!
+  after_commit :flush_cache!, :reindex_user
   after_save :create_json_cache
   after_destroy :create_json_cache
 
@@ -97,6 +97,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def reindex_user
+    User.reindex
+  end
 
   def facebook
     self.skip_confirmation! unless self.provider.nil?
