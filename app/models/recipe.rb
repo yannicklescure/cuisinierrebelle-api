@@ -49,7 +49,8 @@ class Recipe < ApplicationRecord
 
   before_save :sanitize_youtube_video_link
   before_commit :flush_cache!
-  after_commit :create_json_cache, :reindex_recipe
+  after_commit :reindex_recipe
+  after_save :create_json_cache
   # after_destroy :create_json_cache_after_destroy
 
   private
