@@ -1,6 +1,6 @@
 Rails.application.configure do
-  # Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
-  Elasticsearch::Model.client = Elasticsearch::Client.new(host: ENV['SEARCHBOX_URL'], http: { port: 443, scheme: 'https' })
+  Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
+  # Elasticsearch::Model.client = Elasticsearch::Client.new(host: ENV['SEARCHBOX_URL'], http: { port: 443, scheme: 'https' })
 
   # config.hosts << "www.cuisinierrebelle.com"
   config.action_mailer.default_url_options = { host: "https://www.cuisinierrebelle.com" }
