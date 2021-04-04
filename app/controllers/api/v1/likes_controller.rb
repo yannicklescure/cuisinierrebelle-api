@@ -11,14 +11,15 @@ class Api::V1::LikesController < Api::V1::BaseController
     @like = Like.new(like_params)
     authorize @like
     @like.save
-    render json: MultiJson.dump({})
+    head :no_content
+    # render json: MultiJson.dump({})
   end
 
   def destroy
+    # binding.pry
     @recipe = Recipe.find(params[:id])
     @user = current_user
     @like = Like.find_by(user: @user, recipe: @recipe)
-    # binding.pry
     authorize @like
     @like.destroy
     head :no_content
