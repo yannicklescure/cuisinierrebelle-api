@@ -3,8 +3,8 @@ class Api::V1::SearchController < Api::V1::BaseController
   # before_action :authenticate_user!, except: [ :index ]
 
   def index
-      @search_recipes = policy_scope(Recipe).includes([:comments, :user]).search(params[:query])
       # binding.pry
+      @search_recipes = policy_scope(Recipe).includes([:comments, :user]).search(params[:query])
       # @results = {
       #   user: @search_users.any? ? @search_users.map { |r| User.find(r.id) }.sort_by {|k,v| k.id}.reverse : [],
       #   recipe: @search_recipes.any? ? @search_recipes.map { |r| Recipe.find(r.id) }.sort_by {|k,v| k.id}.reverse : []
