@@ -98,7 +98,7 @@ Rails.application.routes.draw do
   # # get '/status/:id', to: 'posts#show', format: false#, constraints: { id: /.*/ }
   # # match '/status/*path', to: 'posts#index', format: false, via: :get
 
-    # root to: "application#index"
+    root to: "welcome#index"
     # match "*path", to: "application#index", format: false, via: :get
     # root to: 'vue#index', format: false
     # match "*path", to: "vue#index", format: false, via: :get

@@ -14,7 +14,7 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
-  # config.action_controller.asset_host = "http://localhost:3000"
+  config.action_controller.asset_host = "http://localhost:3000"
   # config.action_controller.asset_host = 'http://' + Rails::Server.new.options[:Host] + ':' + Rails::Server.new.options[:Port]
 
   # Enable/disable caching. By default caching is disabled.
