@@ -67,18 +67,21 @@ class Api::V1::BaseController < ActionController::API
     @token = request.headers['Authorization']&.split('Bearer ')&.last
     @token = nil if @token == "null"
     puts "token #{ @token }"
-    # binding.pry
-    # if request.headers['Authorization'].present?
     if @token.nil?
       @user = NullObject.new
-      authorize @user
+      # authorize @user, policy_class: NullObjectPolicy
     else
       jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1].remove('"'), ENV['DEVISE_JWT_SECRET_KEY']).first
       @user = User.find(jwt_payload['user_id'])
-      authorize @user
-      puts @user.email
-      authenticate_and_set_user if @user.present?
+      # authorize @user, policy_class: UserPolicy
+      if @user.present?
+        # binding.pry
+        authenticate_and_set_user
+        puts @user.email
+      end
+      # return
     end
+    authorize @user
   end
 
   def user_not_authorized(exception)

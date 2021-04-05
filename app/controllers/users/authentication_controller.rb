@@ -49,7 +49,6 @@ module Users
         locale: resource.locale,
         moderator: resource.moderator,
         freemium: resource.freemium,
-        # likes: Like.where(user_id: resource.id).map { |r| r.recipe_id },
         likes: Like.where(user_id: resource.id),
         commentLikes: CommentLike.where(user_id: resource.id).map { |r| r.comment_id },
         replyLikes: ReplyLike.where(user_id: resource.id).map { |r| r.reply_id },
@@ -66,7 +65,7 @@ module Users
                 }
               }
             }
-          },
+          }
         },
         following: {
           count: resource.following.length,
@@ -80,8 +79,8 @@ module Users
                 }
               }
             }
-          },
-        },
+          }
+        }
       })
     end
   end

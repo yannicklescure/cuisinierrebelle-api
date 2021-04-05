@@ -48,6 +48,8 @@ Rails.application.routes.draw do
         post '/users/password/reset_verification', to: 'password#reset_user_password_verification', as: 'reset_user_password_verification'
         post '/users/password/request', to: 'password#request_user_password_reset', as: 'request_user_password_reset'
         get '/users/status', to: 'users#is_authenticated'
+        get '/users/current', to: 'users#current'
+        get '/state', to: 'state#index'
 
         resources :users, only: [ :index, :show ] do
           # get :followers
@@ -59,7 +61,7 @@ Rails.application.routes.draw do
         resources :notification, only: [ :update ]
         resources :notifications, only: [ :index ]
         resources :analytics, only: [ :index ]
-        resources :state, only: [ :index ]
+        # resources :state, only: [ :index ]
         resources :search, only: [ :index ]
         resources :unsplash_images, only: [ :index ]
         resources :pages, only: [ :index, :create, :update ]

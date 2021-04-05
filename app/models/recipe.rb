@@ -16,7 +16,7 @@ class Recipe < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  # acts_as_taggable_on :tags
+  acts_as_taggable_on :tags
 
   # is_impressionable
   # is_impressionable counter_cache: true

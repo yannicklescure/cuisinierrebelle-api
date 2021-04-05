@@ -58,6 +58,10 @@ class UserPolicy < ApplicationPolicy
   end
 
   def photo?
+    truecurrent
+  end
+
+  def current?
     true
   end
 
