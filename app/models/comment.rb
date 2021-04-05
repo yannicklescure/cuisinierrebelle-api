@@ -8,7 +8,7 @@ class Comment < ApplicationRecord
 
   validates :content, presence: true
 
-  after_save :create_json_cache
+  # after_save :create_json_cache
 
   private
 

@@ -19,7 +19,7 @@ class About < ApplicationRecord
   #   message: I18n.t(".only_allows_url")
   # }
 
-  after_save :create_json_cache
+  # after_save :create_json_cache
 
   private
 

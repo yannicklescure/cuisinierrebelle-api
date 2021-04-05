@@ -7,7 +7,7 @@ class Analytics < ApplicationRecord
   end
 
   after_commit :flush_cache!
-  after_save :create_json_cache
+  # after_save :create_json_cache
 
   private
 

@@ -2,7 +2,7 @@ class Bookmark < ApplicationRecord
   belongs_to :user, touch: true
   belongs_to :recipe, touch: true
 
-  after_save :create_json_cache
+  # after_save :create_json_cache
 
   private
 
