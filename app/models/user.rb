@@ -68,7 +68,7 @@ class User < ApplicationRecord
   before_commit :facebook, on: [:create]
   before_commit :sanitize_user_slug, :sanitize_user_image, on: [:create, :update]
   before_commit :flush_cache!
-  after_commit :reindex_user
+  # after_commit :reindex_user
   after_save :create_json_cache
   after_destroy :create_json_cache
 

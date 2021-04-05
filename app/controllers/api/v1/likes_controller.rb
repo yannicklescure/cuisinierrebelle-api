@@ -5,23 +5,27 @@ class Api::V1::LikesController < Api::V1::BaseController
 
   def create
     # binding.pry
-    # token   = request.headers.fetch("Authorization", "").split(" ").last
-    # payload = JWT.decode(token, nil, false)
-    # @user = User.find(payload[0]["sub"])
-    @like = Like.new(like_params)
-    authorize @like
-    @like.save
+    @recipe = Recipe.includes([:taggings]).find(params[:recipe_id])
+    @user = current_user
+    @like = Like.find_by(user: @user, recipe: @recipe)
+    if @like.nil?
+      @like = Like.new(like_params)
+      authorize @like
+      @like.save
+    end
     head :no_content
     # render json: MultiJson.dump({})
   end
 
   def destroy
     # binding.pry
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.includes([:taggings]).find(params[:id])
     @user = current_user
     @like = Like.find_by(user: @user, recipe: @recipe)
-    authorize @like
-    @like.destroy
+    unless @like.nil?
+      authorize @like
+      @like.destroy
+    end
     head :no_content
   end
 

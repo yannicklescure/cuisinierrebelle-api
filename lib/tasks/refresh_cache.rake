@@ -1,6 +1,9 @@
 namespace :refresh_cache do
   desc "This task refreshes all caches"
   task :generate => :environment do
+    puts 'reindexing ElasticSearch data...'
+    Recipe.reindex
+    User.reindex
     puts 'flushing the cache...'
     Rails.cache.clear
     puts 'refresh the cache...'
