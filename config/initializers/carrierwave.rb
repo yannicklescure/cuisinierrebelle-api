@@ -9,13 +9,13 @@ CarrierWave.configure do |config|
     provider:              'AWS',               # required
     aws_access_key_id:     ENV['S3_KEY'],       # required unless using use_iam_profile
     aws_secret_access_key: ENV['S3_SECRET'],    # required unless using use_iam_profile
-    use_iam_profile:       false,               # optional, defaults to false
+    # use_iam_profile:       false,               # optional, defaults to false
     region:                ENV['S3_REGION'],    # optional, defaults to 'us-east-1'
-    host:                  ENV['S3_CDN_URL'], # optional, defaults to nil
-    endpoint:              ENV['S3_ASSET_URL']    # optional, defaults to nil
+    host:                  ENV['S3_CDN_URL'],   # optional, defaults to nil
+    endpoint:              ENV['S3_ASSET_URL']  # optional, defaults to nil
   }
-  config.fog_directory  = ENV['S3_BUCKET_NAME']                                      # required
-  config.fog_public     = false                                                 # optional, defaults to true
+  config.fog_directory  = ENV['S3_BUCKET_NAME']                                 # required
+  config.fog_public     = true                                                  # optional, defaults to true
   config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" } # optional, defaults to {}
   # For an application which utilizes multiple servers but does not need caches persisted across requests,
   # uncomment the line :file instead of the default :storage.  Otherwise, it will use AWS as the temp cache store.
