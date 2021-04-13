@@ -13,7 +13,8 @@ class CommentPhotoUploader < CarrierWave::Uploader::Base
   if Rails.env.development? || Rails.env.test?
     storage :file
   elsif Rails.env.production?
-    storage :fog
+    # storage :fog
+    storage :aws
   end
 
   # Override the directory where uploaded files will be stored.
