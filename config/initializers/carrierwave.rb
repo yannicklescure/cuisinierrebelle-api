@@ -9,7 +9,7 @@ CarrierWave.configure do |config|
     provider:              'AWS',                        # required
     aws_access_key_id:     ENV['S3_KEY'],                # required unless using use_iam_profile
     aws_secret_access_key: ENV['S3_SECRET'],             # required unless using use_iam_profile
-    use_iam_profile:       true,                         # optional, defaults to false
+    use_iam_profile:       false,                         # optional, defaults to false
     region:                ENV['S3_REGION'],             # optional, defaults to 'us-east-1'
     host:                  ENV['S3_ASSET_URL'],            # optional, defaults to nil
     endpoint:              ENV['S3_CDN_URL'] # optional, defaults to nil
