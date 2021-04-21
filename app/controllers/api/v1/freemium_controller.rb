@@ -10,6 +10,7 @@ class Api::V1::FreemiumController < Api::V1::BaseController
   def update
     @user.freemium = params[:freemium] == 'true'
     @user.save
+    render json: { freemium: @user.freemium }
   end
 
   private
