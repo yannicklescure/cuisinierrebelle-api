@@ -6,7 +6,7 @@ class Api::V1::NotificationController < Api::V1::BaseController
 
   def update
     # binding.pry
-    @user.notification = params[:notification]
+    @user.notification = params[:notification] == 'true'
     @user.save
     render json: { notification: @user.notification }
   end

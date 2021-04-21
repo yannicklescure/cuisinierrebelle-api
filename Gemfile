@@ -1,6 +1,6 @@
 #Gemfile
 source 'https://rubygems.org'
-ruby '2.7.2'
+ruby '2.7.3'
 
 gem 'rails', '6.1.3'
 gem 'rails-i18n' #, '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
