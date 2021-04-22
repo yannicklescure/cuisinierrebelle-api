@@ -245,7 +245,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
         }
       })
     end
-    render json
+    render json: json
   end
 
   def create
