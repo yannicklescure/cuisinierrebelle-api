@@ -82,7 +82,7 @@ Rails.application.routes.draw do
       end
     end
   # end
-
+  get '/', to: proc { [200, {}, ['']] }
   # scope '(:locale)', locale: /en|es|fr/ do
   # #   # get '/:id/settings', to: 'settings#index', as: 'user_settings'
   # #   # get '/:id/edit', to: 'users/registrations#edit', as: 'user_edit'
