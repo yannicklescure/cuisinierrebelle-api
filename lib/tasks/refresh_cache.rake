@@ -9,6 +9,7 @@ namespace :refresh_cache do
     puts 'refresh the cache...'
     CreateAnalyticsJsonCacheJob.perform_later
     CreatePagesJsonCacheJob.perform_later
+    CreateRecipeJsonCacheJob.perform_later
     CreateRecipesJsonCacheJob.perform_later
     CreateUnsplashImagesJsonCacheJob.perform_later
     CreateUsersJsonCacheJob.perform_later
