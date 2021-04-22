@@ -24,7 +24,7 @@ class CreateUsersJsonCacheJob < ApplicationJob
                     },
                     createdAt: (user.follower_relationships.find_by(following_id: user.id, follower_id: f.id).created_at.to_f * 1000).to_i
                   }
-                }.sort_by { |hsh| hsh[:data][:createdAt] },
+                }.compact.sort_by { |hsh| hsh[:data][:createdAt] }
               },
               following: {
                 count: user.following.length,
@@ -39,7 +39,7 @@ class CreateUsersJsonCacheJob < ApplicationJob
                     },
                     createdAt: (user.following_relationships.find_by(following_id: f.id, follower_id: user.id).created_at.to_f * 1000).to_i
                   }
-                }.sort_by { |hsh| hsh[:data][:createdAt] },
+                }.compact.sort_by { |hsh| hsh[:data][:createdAt] }
               },
               image: {
                 full: {
