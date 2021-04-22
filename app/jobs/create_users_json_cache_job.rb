@@ -21,7 +21,8 @@ class CreateUsersJsonCacheJob < ApplicationJob
                       thumb: {
                         url: f.image.url(:thumb)
                       }
-                    }
+                    },
+                    createdAt: (user.follower_relationships.find_by(following_id: user.id, follower_id: f.id).created_at.to_f * 1000).to_i
                   }
                 },
               },
@@ -35,7 +36,8 @@ class CreateUsersJsonCacheJob < ApplicationJob
                       thumb: {
                         url: f.image.url(:thumb)
                       }
-                    }
+                    },
+                    createdAt: (user.following_relationships.find_by(following_id: f.id, follower_id: user.id).created_at.to_f * 1000).to_i
                   }
                 },
               },
