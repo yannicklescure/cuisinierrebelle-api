@@ -183,15 +183,13 @@ GEM
     formatador (0.2.5)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
-    gems (1.2.0)
     gibbon (3.4.0)
       faraday (>= 0.16.0)
       multi_json (>= 1.11.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    google-api-client (0.53.0)
+    google-apis-analyticsreporting_v4 (0.2.0)
       google-apis-core (~> 0.1)
-      google-apis-generator (~> 0.1)
     google-apis-core (0.3.0)
       addressable (~> 2.5, >= 2.5.1)
       googleauth (~> 0.14)
@@ -202,14 +200,6 @@ GEM
       rexml
       signet (~> 0.14)
       webrick
-    google-apis-discovery_v1 (0.2.0)
-      google-apis-core (~> 0.1)
-    google-apis-generator (0.2.0)
-      activesupport (>= 5.0)
-      gems (~> 1.2)
-      google-apis-core (~> 0.1)
-      google-apis-discovery_v1 (~> 0.0)
-      thor (>= 0.20, < 2.a)
     googleauth (0.16.1)
       faraday (>= 0.17.3, < 2.0)
       jwt (>= 1.4, < 3.0)
@@ -542,7 +532,7 @@ DEPENDENCIES
   fog-aws
   friendly_id (~> 5.2.4)
   gibbon
-  google-api-client (~> 0.11)
+  google-apis-analyticsreporting_v4
   googleauth
   hiredis
   http_accept_language
