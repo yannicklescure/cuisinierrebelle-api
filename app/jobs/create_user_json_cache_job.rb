@@ -3,7 +3,7 @@ class CreateUserJsonCacheJob < ApplicationJob
 
   def perform(*_args)
     User.all.includes([:follower_relationships, :followers, :following]).each do |user|
-      cache_key_with_version = "users/#{user.id}-#{(user.created_at.to_f * 1000).to_i}"
+      cache_key_with_version = "users/#{user.id}-#{(user.updated_at.to_f * 1000).to_i}"
       Rails.cache.fetch("#{cache_key_with_version}/show") do
         MultiJson.dump({
           data: {

@@ -74,7 +74,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     @user = User.find_by(slug: params[:id])
     authorize @user
     # products/233-20140225082222765838000/competing_price
-    cache_key_with_version = "users/#{@user.id}-#{(@user.created_at.to_f * 1000).to_i}"
+    cache_key_with_version = "users/#{@user.id}-#{(@user.updated_at.to_f * 1000).to_i}"
     json = Rails.cache.fetch("#{cache_key_with_version}/show") do
       MultiJson.dump({
         data: {
