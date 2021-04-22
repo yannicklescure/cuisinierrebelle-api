@@ -73,8 +73,11 @@ class Api::V1::UsersController < Api::V1::BaseController
     # @device = DeviceDetector.new(request.user_agent).device_type
     @user = User.find_by(slug: params[:id])
     authorize @user
-    json = MultiJson.dump({
-      data: {
+    # products/233-20140225082222765838000/competing_price
+    cache_key_with_version = "users/#{@user.id}-#{(@user.created_at.to_f * 1000).to_i}"
+    json = Rails.cache.fetch("#{cache_key_with_version}/show") do
+      MultiJson.dump({
+        data: {
           id: @user.id,
           slug: @user.slug,
           name: @user.name,
@@ -126,6 +129,7 @@ class Api::V1::UsersController < Api::V1::BaseController
           createdAt: (@user.created_at.to_f * 1000).to_i
         }
       })
+    end
     render json: json
   end
 

@@ -12,6 +12,7 @@ namespace :refresh_cache do
     CreateRecipesJsonCacheJob.perform_later
     CreateUnsplashImagesJsonCacheJob.perform_later
     CreateUsersJsonCacheJob.perform_later
+    CreateUserJsonCacheJob.perform_later
     puts "Done."
   end
 end
