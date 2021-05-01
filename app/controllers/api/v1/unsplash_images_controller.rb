@@ -1,7 +1,6 @@
 class Api::V1::UnsplashImagesController < Api::V1::BaseController
 
   def index
-    @unsplash_images = policy_scope(UnsplashImage)
 
     # binding.pry
 
@@ -15,9 +14,10 @@ class Api::V1::UnsplashImagesController < Api::V1::BaseController
     # )
     # @unsplash_image.save
 
+    @unsplash_images = policy_scope(UnsplashImage)
     @unsplash_image = UnsplashImage.last
 
-    json = Rails.cache.fetch(UnsplashImage.cache_key(@unsplash_images)) do
+    json = Rails.cache.fetch(UnsplashImage.cache_key(@unsplash_images), expires_in: 12.hours) do
       # recipes.to_json(include: :user, :comments)
       MultiJson.dump({
         data: {
