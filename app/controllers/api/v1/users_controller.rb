@@ -199,10 +199,16 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def is_authenticated
+    ip_address = request.remote_ip
+    results = Geocoder.search(ip_address)
+    # results.first.coordinates
+    # results.first.country
+
     # process_token
     # binding.pry
     render json: {
-      ipAddress: request.remote_ip,
+      country: results.first.country,
+      ipAddress: ip_address,
       isAuthenticated: user_signed_in?
     }
   end
