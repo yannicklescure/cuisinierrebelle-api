@@ -2,16 +2,19 @@ class CreateRecipesJsonCacheJob < ApplicationJob
   queue_as :default
 
   def perform(*_args)
-    recipes = Recipe.includes([:user, :comments])
+    @recipes = Recipe.includes([:user, :comments])
     timestamp = (Recipe.last.created_at.to_f * 1000).to_i
-    Rails.cache.fetch(Recipe.cache_key(recipes)) do
-      # recipes.to_json(include: :user, :comments)
+    cache_key_with_version = "recipes/#{@recipes.last.id}-#{(@recipes.last.updated_at.to_f * 1000).to_i}"
+    Rails.cache.fetch("#{cache_key_with_version}/index") do
+    # Rails.cache.fetch(Recipe.cache_key(@recipes)) do
+      # @recipes.to_json(include: :user, :comments)
       MultiJson.dump({
         data: {
           isAuthenticated: false,
+          ipAddress: request.remote_ip,
           lastUpdated: timestamp,
           timestamp: timestamp,
-          recipes: recipes.map { |recipe| {
+          @recipes: @recipes.map { |recipe| {
               timestamp: (recipe.created_at.to_f * 1000).to_i,
               recipe: {
                 id: recipe.id,

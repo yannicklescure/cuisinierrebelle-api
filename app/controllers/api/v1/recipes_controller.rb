@@ -12,10 +12,13 @@ class Api::V1::RecipesController < Api::V1::BaseController
     @last_update = (Recipe.last.created_at.to_f * 1000).to_i
     @timestamp = @last_update < force_update ? force_update : @last_update
     # binding.pry
-    json = Rails.cache.fetch(Recipe.cache_key(@recipes)) do
+    cache_key_with_version = "recipes/#{@recipes.last.id}-#{(@recipes.last.updated_at.to_f * 1000).to_i}"
+    json = Rails.cache.fetch("#{cache_key_with_version}/index") do
+    # json = Rails.cache.fetch(Recipe.cache_key(@recipes)) do
       MultiJson.dump({
         data: {
           isAuthenticated: user_signed_in?,
+          ipAddress: request.remote_ip,
           lastUpdated: (Recipe.last.created_at.to_f * 1000).to_i,
           timestamp: @timestamp,
           recipes: @recipes.map { |recipe| {
