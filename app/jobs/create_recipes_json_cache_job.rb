@@ -11,7 +11,7 @@ class CreateRecipesJsonCacheJob < ApplicationJob
       MultiJson.dump({
         data: {
           isAuthenticated: false,
-          # ipAddress: request.remote_ip,
+          ipAddress: request.remote_ip,
           lastUpdated: timestamp,
           timestamp: timestamp,
           recipes: @recipes.map { |recipe| {
