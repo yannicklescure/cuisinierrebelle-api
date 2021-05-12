@@ -18,7 +18,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
       MultiJson.dump({
         data: {
           isAuthenticated: user_signed_in?,
-          # ipAddress: request.remote_ip,
+          ipAddress: request.remote_ip,
           lastUpdated: (Recipe.last.created_at.to_f * 1000).to_i,
           timestamp: @timestamp,
           recipes: @recipes.map { |recipe| {
