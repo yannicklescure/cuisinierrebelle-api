@@ -202,6 +202,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     # process_token
     # binding.pry
     render json: {
+      ipAddress: request.remote_ip,
       isAuthenticated: user_signed_in?
     }
   end
