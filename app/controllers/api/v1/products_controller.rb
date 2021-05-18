@@ -5,12 +5,8 @@ class Api::V1::ProductsController < Api::V1::BaseController
     @products = policy_scope(Product)
 
     cache_key_with_version = "products/#{@products.last.id}-#{(@products.last.updated_at.to_f * 1000).to_i}"
-    json = Rails.cache.fetch("#{cache_key_with_version}/index") do
-      MultiJson.dump({
-        data: {
-          products: @products
-        }
-      })
+    json = Rails.cache.fetch("#{cache_key_with_version}/index2") do
+      MultiJson.dump(@products)
     end
     render json: json
   end

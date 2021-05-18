@@ -166,7 +166,7 @@ ActiveRecord::Schema.define(version: 2021_05_18_014138) do
     t.bigint "searchable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
   end
 
   create_table "products", force: :cascade do |t|
