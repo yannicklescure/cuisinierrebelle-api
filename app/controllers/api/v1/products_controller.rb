@@ -6,7 +6,15 @@ class Api::V1::ProductsController < Api::V1::BaseController
 
     cache_key_with_version = "products/#{@products.last.id}-#{(@products.last.updated_at.to_f * 1000).to_i}"
     json = Rails.cache.fetch("#{cache_key_with_version}/index2") do
-      MultiJson.dump(@products)
+      MultiJson.dump(@products.map { |product| {
+        title: product.title,
+        description: product.description,
+        remote_image_url: product.image.url,
+        url: product.url,
+        provider: product.provider,
+        country: product.country
+      }
+    })
     end
     render json: json
   end
