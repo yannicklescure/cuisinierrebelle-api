@@ -5,4 +5,5 @@ class Product < ApplicationRecord
   validates :url, url: true
 
   mount_uploader :image, PhotoUploader
+  mount_uploader :photo, PhotoUploader
 end
