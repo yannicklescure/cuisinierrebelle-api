@@ -9,7 +9,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
       MultiJson.dump(@products.map { |product| {
         title: product.title,
         description: product.description,
-        remote_image_url: product.image.url,
+        image: product.image,
         url: product.url,
         provider: product.provider,
         country: product.country
