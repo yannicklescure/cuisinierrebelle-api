@@ -1,8 +1,8 @@
 class Product < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
-  validates :photo, presence: true
+  validates :image, presence: true
   validates :url, url: true
 
-  mount_uploader :photo, PhotoUploader
+  mount_uploader :image, PhotoUploader
 end

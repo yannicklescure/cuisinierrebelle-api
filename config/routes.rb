@@ -67,6 +67,7 @@ Rails.application.routes.draw do
         resources :pages, only: [ :index, :create, :update ]
         resources :recipes, only: [ :index, :show, :create, :update, :destroy ]
         resources :recipe_logs, only: [ :create ]
+        resources :products, only: [ :index, :create, :destroy, :update ]
         resources :comments, only: [ :create, :destroy, :update ] do
           resources :likes, only: [ :create, :destroy ], controller: :comment_likes
           resources :replies, only: [ :create, :destroy, :update ] do
