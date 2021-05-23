@@ -20,6 +20,14 @@ products_attributes = [
     url: 'https://amzn.to/2RZF0OL'
   },
   {
+    country: 'FR',
+    description: 'Rouleaux à pâtisserie en acier inoxydable avec tapis de cuisson en silicone, rouleaux pâtisserie antiadhésifs avec anneaux réglables pour cuisson fondant pâte.',
+    provider: 'Amazon',
+    remote_image_url: 'https://images-na.ssl-images-amazon.com/images/I/71JWK3UDi%2BL._AC_SL1500_.jpg,
+    title: 'Rouleaux à Pâtisserie',
+    url: 'https://amzn.to/3bMuOjF'
+  },
+  {
     country: 'US',
     description: "Une combinaison parfaite de forme et de fonction qui ne s'arrête pas, le Lodge Dutch Oven est un classique en fonte émaillée idéal pour préparer et servir des repas mémorables.",
     provider: 'Amazon',
