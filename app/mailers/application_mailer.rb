@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'contact@cuisinierrebelle.com'
+  default from: %(Cuisinier Rebelle <contact@cuisinierrebelle.com>)
   # layout 'mailer'
   layout 'bootstrap-mailer'
 end
