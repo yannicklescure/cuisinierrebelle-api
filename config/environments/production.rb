@@ -43,8 +43,12 @@ Rails.application.configure do
 
   # config.action_mailer.delivery_method = :postmark
   # config.action_mailer.postmark_settings = { :api_token => Rails.application.secrets.postmark_api_token }
-  config.action_mailer.delivery_method     = :postmark
-  config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
+  # config.action_mailer.delivery_method     = :postmark
+  # config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
+  config.x.mail_from = %(Cuisinier Rebelle <contact@cuisinierrebelle.com>)
+  config.action_mailer.default_url_options = { host: 'cuisinierrebelle.com' }
+  config.action_mailer.smtp_settings = { address: 'email-smtp.us-east-1.amazonaws.com', user_name: ENV['AWS_SES_SMTP_USER'], password: ENV['AWS_SES_SMTP_PWD'] }
+  config.action_mailer.raise_delivery_errors = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
