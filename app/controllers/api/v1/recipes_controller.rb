@@ -273,9 +273,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
     end
     # binding.pry
     if @recipe.save
-      @recipe.user.followers.where(notification: true).each do |user|
-        UserMailer.with(user: user, recipe: @recipe).recipe.deliver_later
-      end
+      SendRecipeNotificationJob.perform_later(users: @recipe.user.followers, recipe: @recipe)
       render json:  MultiJson.dump({
         timestamp: (@recipe.created_at.to_f * 1000).to_i,
         recipe: {
