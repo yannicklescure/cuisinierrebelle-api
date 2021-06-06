@@ -273,7 +273,8 @@ class Api::V1::RecipesController < Api::V1::BaseController
     end
     # binding.pry
     if @recipe.save
-      SendRecipeNotificationJob.perform_later(users: @recipe.user.followers.to_json, recipe: @recipe.to_json)
+      # SendRecipeNotificationJob.perform_later(users: @recipe.user.followers.to_json, recipe: @recipe.to_json)
+      SendRecipeNotificationJob.perform_later(@recipe.to_json)
       render json:  MultiJson.dump({
         timestamp: (@recipe.created_at.to_f * 1000).to_i,
         recipe: {

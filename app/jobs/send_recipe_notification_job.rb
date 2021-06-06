@@ -2,23 +2,19 @@ class SendRecipeNotificationJob < ApplicationJob
   queue_as :default
 
   def perform(args={})
-    users = JSON.parse(args[:users])
-    recipe = Recipe.find(JSON.parse(args[:recipe])['id'])
+    # users = JSON.parse(args[:users])
+    @recipe = Recipe.find(JSON.parse(args[:recipe])['id'])
+    # users: @recipe.user.followers.to_json, recipe: @recipe.to_json
     # binding.pry
     # users.where(notification: true).each do |user|
-    if (users.length > 0)
-      users.each do |user|
-        # puts user['notification']
-        this_user = User.find(user['id'])
-        if (this_user['notification'])
-          verification = Truemail.validate(this_user['email'])
-          if (verification.result.success)
-            # puts this_user['email']
-            UserMailer.with(user: this_user, recipe: recipe).recipe.deliver_later
-          else
-            this_user.notification = false
-            this_user.save
-          end
+    @recipe.user.followers.each do |user|
+      if (user['notification'])
+        verification = Truemail.validate(user['email'])
+        if (verification.result.success)
+          UserMailer.with(user: user, recipe: @recipe).recipe.deliver_later
+        else
+          user.notification = false
+          user.save
         end
       end
     end
