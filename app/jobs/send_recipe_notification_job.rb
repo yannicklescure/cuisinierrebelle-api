@@ -8,14 +8,15 @@ class SendRecipeNotificationJob < ApplicationJob
     # binding.pry
     # users.where(notification: true).each do |user|
     @recipe.user.followers.each do |user|
-      if (user['notification'])
-        verification = Truemail.validate(user['email'])
-        if (verification.result.success)
-          UserMailer.with(user: user, recipe: @recipe).recipe.deliver_later
-        else
-          user.notification = false
-          user.save
-        end
+      if (user.notification)
+        UserMailer.with(user: user, recipe: @recipe).recipe.deliver_later
+        # verification = Truemail.validate(user['email'])
+        # if (verification.result.success)
+        #   UserMailer.with(user: user, recipe: @recipe).recipe.deliver_later
+        # else
+        #   user.notification = false
+        #   user.save
+        # end
       end
     end
   end
