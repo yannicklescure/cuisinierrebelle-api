@@ -2,7 +2,7 @@ require 'truemail'
 
 Truemail.configure do |config|
   # Required parameter. Must be an existing email on behalf of which verification will be performed
-  config.verifier_email = 'contact@cuisinierrebelle.com'
+  config.verifier_email = 'noreply@cuisinierrebelle.com'
 
   # Optional parameter. Must be an existing domain on behalf of which verification will be performed.
   # By default verifier domain based on verifier email
