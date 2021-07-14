@@ -5,6 +5,22 @@ puts 'creating products...'
 products_attributes = [
   {
     country: 'FR',
+    description: "Tranchant japonais, robustesse occidentale. Kotaï a combiné le meilleur des deux mondes, pour que vous n'ayez pas à vous contenter d'un seul.",
+    provider: 'Kotaï',
+    remote_image_url: 'https://cdn.shopify.com/s/files/1/2068/6253/products/7-Japanese-chef-knife.jpg',
+    url: 'https://kotaikitchen.com/products/high-carbon-japanese-steel-gyuto-chef-knife?ref=cuisinierrebelle',
+    title: 'Couteau de chef Gyuto',
+  },
+  {
+    country: 'US',
+    description: "Tranchant japonais, robustesse occidentale. Kotaï a combiné le meilleur des deux mondes, pour que vous n'ayez pas à vous contenter d'un seul.",
+    provider: 'Kotaï',
+    remote_image_url: 'https://cdn.shopify.com/s/files/1/2068/6253/products/7-Japanese-chef-knife.jpg',
+    url: 'https://kotaikitchen.com/products/high-carbon-japanese-steel-gyuto-chef-knife?ref=cuisinierrebelle',
+    title: 'Couteau de chef Gyuto',
+  },
+  {
+    country: 'FR',
     description: "Ultra résistante cocotte fabriquée en fonte d'acier émaillé fondue d'un seul bloc Cocotte compatible toutes sources de chaleur y compris induction four sans limite de température Idéale pour préparer de délicieux plats mijotés à base de viande de poisson ou de légumes.",
     provider: 'Amazon',
     remote_image_url: 'https://images-na.ssl-images-amazon.com/images/I/81H57WgSkCL._AC_SL1500_.jpg',
